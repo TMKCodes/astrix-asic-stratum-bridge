@@ -3,7 +3,7 @@ package kaspastratum
 import (
 	"testing"
 
-	"github.com/kaspanet/kaspad/app/appmessage"
+	"github.com/astrix-network/astrixd/app/appmessage"
 	"github.com/onemorebsmith/kaspastratum/src/gostratum"
 )
 

@@ -26,7 +26,7 @@ type BridgeConfig struct {
 	UseLogFile      bool          `yaml:"log_to_file"`
 	HealthCheckPort string        `yaml:"health_check_port"`
 	BlockWaitTime   time.Duration `yaml:"block_wait_time"`
-	MinShareDiff    uint          `yaml:"min_share_diff"`
+	MinShareDiff    float64       `yaml:"min_share_diff"`
 	VarDiff         bool          `yaml:"var_diff"`
 	SharesPerMin    uint          `yaml:"shares_per_min"`
 	VarDiffStats    bool          `yaml:"var_diff_stats"`

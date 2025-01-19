@@ -109,7 +109,7 @@ func (c *clientListener) NewBlockAvailable(kapi *KaspaApi) {
 					client.Disconnect() // unrecoverable
 				} else {
 					RecordWorkerError(client.WalletAddr, ErrFailedBlockFetch)
-					client.Logger.Error(fmt.Sprintf("failed fetching new block template from kaspa: %s", err))
+					client.Logger.Error(fmt.Sprintf("failed fetching new block template from astrix: %s", err))
 				}
 				return
 			}
@@ -121,9 +121,11 @@ func (c *clientListener) NewBlockAvailable(kapi *KaspaApi) {
 				return
 			}
 
+			client.Logger.Info(fmt.Sprintf("BigJob: %s", client.RemoteApp))
 			jobId := state.AddJob(template.Block)
 			if !state.initialized {
 				state.initialized = true
+
 				state.useBigJob = bigJobRegex.MatchString(client.RemoteApp)
 				// first pass through send config/default difficulty
 				state.stratumDiff = newKaspaDiff()
@@ -150,6 +152,7 @@ func (c *clientListener) NewBlockAvailable(kapi *KaspaApi) {
 			}
 
 			// // normal notify flow
+			client.Logger.Info(fmt.Sprintf("Sending work %d with params: %v", jobId, jobParams))
 			if err := client.Send(gostratum.JsonRpcEvent{
 				Version: "2.0",
 				Method:  "mining.notify",

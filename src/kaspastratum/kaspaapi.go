@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/kaspanet/kaspad/app/appmessage"
-	"github.com/kaspanet/kaspad/infrastructure/network/rpcclient"
+	"github.com/astrix-network/astrixd/app/appmessage"
+	"github.com/astrix-network/astrixd/infrastructure/network/rpcclient"
 	"github.com/onemorebsmith/kaspastratum/src/gostratum"
 	"github.com/pkg/errors"
 	"go.uber.org/zap"

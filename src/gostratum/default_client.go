@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kaspanet/kaspad/util"
+	"github.com/astrix-network/astrixd/util"
 	"github.com/mattn/go-colorable"
 	"github.com/onemorebsmith/kaspastratum/src/utils"
 	"github.com/pkg/errors"
@@ -140,20 +140,20 @@ func SendExtranonce(ctx *StratumContext) {
 	}
 }
 
-var walletRegex = regexp.MustCompile("kaspa:[a-z0-9]+")
+var walletRegex = regexp.MustCompile("astrix:[a-z0-9]+")
 
 func CleanWallet(in string) (string, error) {
-	_, err := util.DecodeAddress(in, util.Bech32PrefixKaspa)
+	_, err := util.DecodeAddress(in, util.Bech32PrefixAstrix)
 	if err == nil {
 		return in, nil // good to go
 	}
-	if !strings.HasPrefix(in, "kaspa:") {
-		return CleanWallet("kaspa:" + in)
+	if !strings.HasPrefix(in, "astrix:") {
+		return CleanWallet("astrix:" + in)
 	}
 
-	// has kaspa: prefix but other weirdness somewhere
+	// has astrix: prefix but other weirdness somewhere
 	if walletRegex.MatchString(in) {
 		return in[0:67], nil
 	}
-	return "", errors.New("unable to coerce wallet to valid kaspa address")
+	return "", errors.New("unable to coerce wallet to valid astrix address")
 }
