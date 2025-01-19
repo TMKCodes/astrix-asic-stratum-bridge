@@ -54,6 +54,7 @@ func DefaultHandlers() StratumHandlerMap {
 }
 
 func HandleAuthorize(ctx *StratumContext, event JsonRpcEvent) error {
+	fmt.Printf("Event received: %+v\n", event)
 	if len(event.Params) < 1 {
 		return fmt.Errorf("malformed event from miner, expected param[1] to be address")
 	}

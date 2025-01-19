@@ -138,7 +138,7 @@ func (s *KaspaApi) startBlockTemplateListener(ctx context.Context, blockReadyCb 
 func (ks *KaspaApi) GetBlockTemplate(
 	client *gostratum.StratumContext) (*appmessage.GetBlockTemplateResponseMessage, error) {
 	template, err := ks.kaspad.GetBlockTemplate(client.WalletAddr,
-		fmt.Sprintf(`'%s' via onemorebsmith/kaspa-stratum-bridge_%s`, client.RemoteApp, version))
+		fmt.Sprintf(`'%s' via TMKCodes/astrix-asic-stratum-bridge_%s`, client.RemoteApp, version))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed fetching new block template from kaspa")
 	}

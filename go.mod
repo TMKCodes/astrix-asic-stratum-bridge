@@ -1,6 +1,8 @@
 module github.com/onemorebsmith/kaspastratum
 
-go 1.18
+go 1.23
+
+toolchain go1.23.4
 
 require (
 	github.com/astrix-network/astrixd v0.12.18
